@@ -62,5 +62,8 @@ echo:
 install: ${BIN}.hex
 	avrdude -v -e -p$(DEV) -c$(PROGRAMMER) -P$(PORT) -Uflash:w:$<
 
+fuses:
+	avrdude -v -p$(DEV) -c$(PROGRAMMER) -P$(PORT) -U lfuse:w:0xe2:m -U hfuse:w:0x5d:m
+
 clean:
 	rm -f ${BIN}.elf ${BIN}.hex ${OBJECTS}
