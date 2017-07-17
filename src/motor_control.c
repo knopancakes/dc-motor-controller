@@ -48,15 +48,15 @@ motor_control_state_machine()
 
 		pwm_in_total_us = g_pwm_in.microseconds + (100 * g_pwm_in.milliseconds);
 
-//		if( pwm_in_total_us < PWM_INPUT_MIN_US ) {
-//			pwm_out = 0;
-//		} else if ( pwm_in_total_us > PWM_INPUT_MAX_US) {
-//			pwm_out = TIMER_TOP_2KHZ;
-//		} else {
+		if( pwm_in_total_us < PWM_INPUT_MIN_US ) {
+			pwm_out = 0;
+		} else if ( pwm_in_total_us > PWM_INPUT_MAX_US) {
+			pwm_out = TIMER_TOP_2KHZ;
+		} else {
 			tmp = pwm_in_total_us - PWM_INPUT_MIN_US;
 			tmp /= PWM_INPUT_MAX_US - PWM_INPUT_MIN_US;
 			pwm_out = (uint8_t)(TIMER_TOP_2KHZ*tmp);
-//		}
+		}
 
 
 

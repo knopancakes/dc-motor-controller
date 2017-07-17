@@ -48,7 +48,7 @@ ISR(TIM0_COMPA_vect)
 	g_pwm_in_cntr.microseconds += 10;
 	if(g_pwm_in_cntr.microseconds >= 100) {
 		if(++g_pwm_in_cntr.milliseconds >= 2000) {
-			g_pwm_in_cntr.milliseconds = 0;
+			g_pwm_in_cntr.milliseconds = 2000;
 		}
 		g_pwm_in_cntr.microseconds = 0;
 //		PORTB ^= _BV(1);
